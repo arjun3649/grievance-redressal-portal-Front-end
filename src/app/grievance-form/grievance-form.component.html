@@ -1,0 +1,163 @@
+<form [formGroup]="grievanceForm" (ngSubmit)="onSubmit()" class="bg-white p-8 rounded-xl shadow-xl w-full max-w-4xl mx-auto transform transition-transform duration-500 ">
+  <h1 class="text-3xl font-bold mb-6 text-center bg-gradient-to-r from-blue-400 to-blue-600 text-white py-2 rounded-lg">
+    Post Grievance
+  </h1>
+
+  <!-- Personal Information Section -->
+  <fieldset class="border p-6 rounded-lg mb-6 bg-gray-50 shadow-md border-gray-300">
+    <legend class="text-orange-500 text-xl font-semibold mb-4">
+      Personal Information
+    </legend>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div>
+        <label for="firstName" class="block text-gray-700 mb-1">First Name *</label>
+        <input type="text" id="firstName" class="w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:border-blue-500" formControlName="firstName">
+      </div>
+      <div>
+        <label for="middleName" class="block text-gray-700 mb-1">Middle Name</label>
+        <input type="text" id="middleName" class="w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:border-blue-500" formControlName="middleName">
+      </div>
+      <div>
+        <label for="lastName" class="block text-gray-700 mb-1">Last Name *</label>
+        <input type="text" id="lastName" class="w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:border-blue-500" formControlName="lastName">
+      </div>
+      <div>
+        <label for="dob" class="block text-gray-700 mb-1">Date of Birth *</label>
+        <input type="date" id="dob" class="w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:border-blue-500" formControlName="dob">
+      </div>
+      <div class="col-span-3 mt-6">
+        <label class="block text-gray-700 mb-1">Gender *</label>
+        <div class="flex space-x-4">
+          <label class="inline-flex items-center">
+            <input type="radio" formControlName="gender" value="Male" class="form-radio text-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500" name="gender">
+            <span class="ml-2 text-gray-700">Male</span>
+          </label>
+          <label class="inline-flex items-center">
+            <input type="radio" formControlName="gender" value="Female" class="form-radio text-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500" name="gender">
+            <span class="ml-2 text-gray-700">Female</span>
+          </label>
+          <label class="inline-flex items-center">
+            <input type="radio" formControlName="gender" value="Transgender" class="form-radio text-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500" name="gender">
+            <span class="ml-2 text-gray-700">Transgender</span>
+          </label>
+        </div>
+      </div>
+      <div>
+        <label for="occupation" class="block text-gray-700 mb-1">Occupation *</label>
+        <select id="occupation" formControlName="occupation" class="w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:border-blue-500">
+          <option *ngFor="let occupation of options.occupations" [value]="occupation">
+            {{ occupation.text }}
+          </option>
+        </select>
+      </div>
+      <div>
+        <label for="address" class="block text-gray-700 mb-1">Address *</label>
+        <input type="text" id="address" class="w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:border-blue-500" formControlName="address">
+      </div>
+      <div>
+        <label for="state" class="block text-gray-700 mb-1">State *</label>
+        <select id="state" class="w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:border-blue-500" formControlName="state">
+          <option *ngFor="let state of options.state" [value]="state">{{ state }}</option>
+        </select>
+      </div>
+      <div>
+        <label for="city" class="block text-gray-700 mb-1">City *</label>
+        <select id="city" class="w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:border-blue-500" formControlName="city">
+          <option *ngFor="let city of options.city" [value]="city">{{ city }}</option>
+        </select>
+      </div>
+      <div>
+        <label for="district" class="block text-gray-700 mb-1">District *</label>
+        <select id="district" class="w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:border-blue-500" formControlName="district">
+          <option *ngFor="let district of options.district" [value]="district">{{ district }}</option>
+        </select>
+      </div>
+      <div>
+        <label for="taluka" class="block text-gray-700 mb-1">Taluka *</label>
+        <select id="taluka" class="w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:border-blue-500" formControlName="taluka">
+          <option *ngFor="let taluka of options.taluka" [value]="taluka">{{ taluka }}</option>
+        </select>
+      </div>
+      <div>
+        <label for="village" class="block text-gray-700 mb-1">Village *</label>
+        <select id="village" class="w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:border-blue-500" formControlName="village">
+          <option *ngFor="let village of options.village" [value]="village">{{ village }}</option>
+        </select>
+      </div>
+      <div>
+        <label for="api-pincode" class="block text-gray-700 mb-1">Pincode *</label>
+        <select id="api-pincode" formControlName="api_pincode" class="w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:border-blue-500">
+          <option *ngFor="let pincode of options.pincodes" [value]="pincode.value">{{ pincode.text }}</option>
+        </select>
+        <div *ngIf="grievanceForm.get('api_pincode')?.invalid && grievanceForm.get('api_pincode')?.touched" class="text-red-500 mt-1">
+          Please select a pincode.
+        </div>
+      </div>
+      <div>
+        <label for="mobile" class="block text-gray-700 mb-1">Mobile *</label>
+        <input type="tel" id="mobile" class="w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:border-blue-500" formControlName="mobile">
+      </div>
+      <div>
+        <label for="email" class="block text-gray-700 mb-1">Email *</label>
+        <input type="email" id="email" class="w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:border-blue-500" formControlName="email">
+      </div>
+    </div>
+  </fieldset>
+
+  <!-- Grievance Details Section -->
+  <fieldset class="border p-6 rounded-lg mb-6 bg-gray-50 shadow-md border-gray-300">
+    <legend class="text-orange-500 text-xl font-semibold mb-4">
+      Grievance Details
+    </legend>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div>
+        <label for="grievanceDistrict" class="block text-gray-700 mb-1">District *</label>
+        <select id="grievanceDistrict" formControlName="grievanceDistrict" class="w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:border-blue-500">
+          <option *ngFor="let district of options.grievanceDistrict" [value]="district">{{ district }}</option>
+        </select>
+      </div>
+      <div>
+        <label for="grievanceTaluka" class="block text-gray-700 mb-1">Taluka *</label>
+        <select id="grievanceTaluka" formControlName="grievanceTaluka" class="w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:border-blue-500">
+          <option *ngFor="let taluka of options.grievanceTaluka" [value]="taluka">{{ taluka }}</option>
+        </select>
+      </div>
+      <div>
+        <label for="grievanceVillage" class="block text-gray-700 mb-1">Village *</label>
+        <select id="grievanceVillage" formControlName="grievanceVillage" class="w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:border-blue-500">
+          <option *ngFor="let village of options.grievanceVillage" [value]="village">{{ village }}</option>
+        </select>
+      </div>
+      <div>
+        <label for="department" class="block text-gray-700 mb-1">Department *</label>
+        <select id="department" formControlName="department" class="w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:border-blue-500">
+          <option *ngFor="let department of options.departments" [value]="department">{{ department }}</option>
+        </select>
+      </div>
+      <div class="col-span-3 mt-6">
+        <label for="grievanceDetails" class="block text-gray-700 mb-1">Grievance Details *</label>
+        <textarea id="grievanceDetails" rows="4" class="w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:border-blue-500" formControlName="grievanceDetails"></textarea>
+      </div>
+      <div class="col-span-3 mt-6">
+        <label for="attachment" class="block text-gray-700 mb-1">Document</label>
+        <input type="file" id="document" class="w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:border-blue-500" formControlName="document">
+      </div>
+      <!-- Captcha Section -->
+      <div class="col-span-3 mt-6">
+        <label for="captcha" class="block text-gray-700 mb-1">Captcha: {{ captchaQuestion }}</label>
+        <input id="captcha" formControlName="captchaAnswer" type="text" class="w-full mt-2 p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:border-blue-500" />
+        <div *ngIf="captchaError" class="text-red-500 mt-1">{{ captchaError }}</div>
+      </div>
+    </div>
+  </fieldset>
+
+  <!-- Buttons Section -->
+  <div class="flex justify-center mt-8">
+    <button type="submit" class="bg-red-600 text-white px-6 py-3 rounded-lg shadow-lg hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 mr-4">
+      Submit
+    </button>
+    <button type="button" (click)="resetForm()" class="bg-gray-800 text-white px-6 py-3 rounded-lg shadow-lg hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-700">
+      Reset
+    </button>
+  </div>
+</form>
