@@ -1,0 +1,15 @@
+
+<div class="otp-container">
+  <h2>OTP Verification</h2>
+  <form (ngSubmit)="onSubmit()">
+    <div class="otp-inputs">
+      <input type="text" maxlength="1" [(ngModel)]="otp[0]" name="otp1" (keyup)="moveFocus($event, 0)">
+      <input type="text" maxlength="1" [(ngModel)]="otp[1]" name="otp2" (keyup)="moveFocus($event, 1)">
+      <input type="text" maxlength="1" [(ngModel)]="otp[2]" name="otp3" (keyup)="moveFocus($event, 2)">
+      <input type="text" maxlength="1" [(ngModel)]="otp[3]" name="otp4" (keyup)="moveFocus($event, 3)">
+    </div>
+    <button type="submit">Verify</button>
+  </form>
+  <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+  <div *ngIf="successMessage" class="success-message">{{ successMessage }}</div>
+</div>

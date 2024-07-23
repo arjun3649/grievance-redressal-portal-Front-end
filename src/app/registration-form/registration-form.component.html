@@ -1,0 +1,237 @@
+<app-navbar></app-navbar>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 mb-5">
+      <!-- Registration Card -->
+      <div class="card shadow p-5 animated zoomIn slow">
+        <h3 class="text-center font-weight-bold text-uppercase mb-3">Registration</h3>
+
+        <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+          <h3 class="text-center mb-4">Part A - Personal Information</h3>
+
+          <!-- First Name -->
+          <div class="form-group">
+            <label for="firstName">First Name *</label>
+            <input type="text" formControlName="firstName" id="firstName" class="form-control" placeholder="Enter First Name">
+            <div *ngIf="registrationForm.get('firstName')?.touched && registrationForm.get('firstName')?.invalid" class="text-danger">
+              First Name is required.
+            </div>
+          </div>
+
+          <!-- Middle Name -->
+          <div class="form-group">
+            <label for="middleName">Middle Name</label>
+            <input type="text" formControlName="middleName" id="middleName" class="form-control" placeholder="Enter Middle Name">
+          </div>
+
+          <!-- Last Name -->
+          <div class="form-group">
+            <label for="lastName">Last Name *</label>
+            <input type="text" formControlName="lastName" id="lastName" class="form-control" placeholder="Enter Last Name">
+            <div *ngIf="registrationForm.get('lastName')?.touched && registrationForm.get('lastName')?.invalid" class="text-danger">
+              Last Name is required.
+            </div>
+          </div>
+
+          <!-- Date of Birth -->
+          <div class="form-group">
+            <label for="dob">Date Of Birth</label>
+            <input type="date" formControlName="dob" id="dob" class="form-control">
+            <div *ngIf="registrationForm.get('dob')?.touched && registrationForm.get('dob')?.invalid" class="text-danger">
+              Date of Birth is required.
+            </div>
+          </div>
+
+          <!-- Gender -->
+          <div class="form-group">
+            <label>Gender *</label><br>
+            <input type="radio" formControlName="gender" value="Male" id="male">
+            <label for="male">Male</label>
+            <input type="radio" formControlName="gender" value="Female" id="female">
+            <label for="female">Female</label>
+            <input type="radio" formControlName="gender" value="Transgender" id="transgender">
+            <label for="transgender">Transgender</label>
+            <div *ngIf="registrationForm.get('gender')?.touched && registrationForm.get('gender')?.invalid" class="text-danger">
+              Gender is required.
+            </div>
+          </div>
+
+          <!-- Address -->
+          <div class="form-group">
+            <label for="address">Address *</label>
+            <input type="text" formControlName="address" id="address" class="form-control" placeholder="Enter Address">
+            <div *ngIf="registrationForm.get('address')?.touched && registrationForm.get('address')?.invalid" class="text-danger">
+              Address is required.
+            </div>
+          </div>
+
+          <!-- State -->
+          <div class="form-group">
+            <label for="state">State *</label>
+            <input type="text" formControlName="state" id="state" class="form-control" placeholder="Enter State">
+            <div *ngIf="registrationForm.get('state')?.touched && registrationForm.get('state')?.invalid" class="text-danger">
+              State is required.
+            </div>
+          </div>
+
+          <!-- District -->
+          <div class="form-group">
+            <label for="district">District</label>
+            <input type="text" formControlName="district" id="district" class="form-control" placeholder="Enter District">
+          </div>
+
+          <!-- Taluka -->
+          <div class="form-group">
+            <label for="taluka">Taluka</label>
+            <select id="taluka" formControlName="taluka" class="form-control" (change)="onTalukaChange($event)">
+              <option value="">Please select Taluka</option>
+              <option value="Ambegaon">Ambegaon</option>
+              <option value="Baramati">Baramati</option>
+              <option value="Bhor">Bhor</option>
+              <option value="Daund">Daund</option>
+              <option value="Haveli">Haveli</option>
+              <option value="Indapur">Indapur</option>
+              <option value="Junnar">Junnar</option>
+              <option value="Khed">Khed (Rajgurunagar)</option>
+              <option value="Maval">Maval</option>
+              <option value="Mulshi">Mulshi</option>
+              <option value="Purandar">Purandar</option>
+              <option value="Shirur">Shirur</option>
+              <option value="Velhe">Velhe</option>
+              <option value="Pune City">Pune City</option>
+            </select>
+          </div>
+
+          <!-- Village -->
+          <div class="form-group">
+            <label for="village">Village</label>
+            <select id="village" formControlName="village" class="form-control">
+              <option value="">Please select Villages</option>
+              <option value="Ambegaon">Ambegaon</option>
+              <option value="Baramati">Baramati</option>
+              <option value="Bhor">Bhor</option>
+              <option value="Daund">Daund</option>
+              <option value="Haveli">Haveli</option>
+              <option value="Indapur">Indapur</option>
+              <option value="Junnar">Junnar</option>
+              <option value="Khed">Khed (Rajgurunagar)</option>
+              <option value="Maval">Maval</option>
+              <option value="Mulshi">Mulshi</option>
+              <option value="Purandar">Purandar</option>
+              <option value="Shirur">Shirur</option>
+              <option value="Velhe">Velhe</option>
+              <option value="Pune City">Pune City</option>
+            </select>
+          </div>
+
+          <!-- Pincode By Taluka -->
+          <div class="form-group">
+            <label for="pincodeByTaluka">Pincode By Taluka</label>
+            <select id="pincodeByTaluka" formControlName="pincodeByTaluka" class="form-control">
+              <option value="">Please select pincode by taluka</option>
+              <option value="412406">412406 (Ambegaon)</option>
+              <option value="413102">413102 (Baramati)</option>
+              <option value="412206">412206 (Bhor)</option>
+              <option value="413801">413801 (Daund)</option>
+              <option value="411005">411005 (Haveli - Pune City (Shivajinagar))</option>
+              <option value="413106">413106 (Indapur)</option>
+              <option value="410502">410502 (Junnar)</option>
+              <option value="410505">410505 (Khed)</option>
+              <option value="410506">410506 (Maval)</option>
+              <option value="412108">412108 (Mulshi)</option>
+              <option value="412301">412301 (Purandar)</option>
+              <option value="412216">412216 (Shirur)</option>
+              <option value="412110">412110 (Velhe)</option>
+              <option value="411001">411001 (Pune City)</option>
+            </select>
+          </div>
+
+          <!-- Pincode -->
+          <div class="form-group">
+            <label for="pincode">Pincode *</label>
+            <input type="text" formControlName="pincode" id="pincode" class="form-control" placeholder="Enter Pincode">
+            <div *ngIf="registrationForm.get('pincode')?.touched && registrationForm.get('pincode')?.invalid" class="text-danger">
+              Pincode is required.
+            </div>
+          </div>
+
+          <!-- Occupation -->
+          <div class="form-group">
+            <label for="occupation">Occupation *</label>
+            <select id="occupation" formControlName="occupation" class="form-control">
+              <option value="">Select Occupation</option>
+              <option value="Student">Student</option>
+              <option value="Professional">Professional</option>
+              <option value="Business">Business</option>
+              <option value="Other">Other</option>
+            </select>
+            <div *ngIf="registrationForm.get('occupation')?.touched && registrationForm.get('occupation')?.invalid" class="text-danger">
+              Occupation is required.
+            </div>
+          </div>
+
+          <!-- City -->
+          <div class="form-group">
+            <label for="city">City</label>
+            <input type="text" formControlName="city" id="city" class="form-control" placeholder="Enter City">
+          </div>
+
+          <!-- Mobile -->
+          <div class="form-group">
+            <label for="mobile">Mobile *</label>
+            <input type="text" formControlName="mobile" id="mobile" class="form-control" placeholder="Enter Mobile Number">
+            <div *ngIf="registrationForm.get('mobile')?.touched && registrationForm.get('mobile')?.invalid" class="text-danger">
+              <span *ngIf="registrationForm.get('mobile')?.errors?.['required']">Mobile number is required.</span>
+              <span *ngIf="registrationForm.get('mobile')?.errors?.['pattern']">Invalid mobile number format.</span>
+            </div>
+          </div>
+
+          <!-- Email -->
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" formControlName="email" id="email" class="form-control" placeholder="Enter Email">
+          </div>
+
+          <!-- Username -->
+          <div class="form-group">
+            <label for="username">Username *</label>
+            <input type="text" formControlName="username" id="username" class="form-control" placeholder="Enter Username">
+            <div *ngIf="registrationForm.get('username')?.touched && registrationForm.get('username')?.invalid" class="text-danger">
+              Username is required.
+            </div>
+          </div>
+
+          <!-- Password -->
+          <div class="form-group">
+            <label for="password">Password *</label>
+            <input type="password" formControlName="password" id="password" class="form-control" placeholder="Enter Password">
+            <div *ngIf="registrationForm.get('password')?.touched && registrationForm.get('password')?.invalid" class="text-danger">
+              <span *ngIf="registrationForm.get('password')?.errors?.['required']">Password is required.</span>
+              <span *ngIf="registrationForm.get('password')?.errors?.['minlength']">Password must be at least 8 characters.</span>
+            </div>
+          </div>
+
+          <!-- Confirm Password -->
+          <div class="form-group">
+            <label for="confirmPassword">Confirm Password *</label>
+            <input type="password" formControlName="confirmPassword" id="confirmPassword" class="form-control" placeholder="Confirm Password">
+            <div *ngIf="registrationForm.hasError('mustMatch')" class="text-danger">
+              Passwords must match.
+            </div>
+          </div>
+
+          <!-- Accept Terms -->
+          <div class="form-group">
+            <input type="checkbox" formControlName="accept" id="accept">
+            <label for="accept">I accept the terms and conditions *</label>
+            <div *ngIf="registrationForm.get('accept')?.touched && registrationForm.get('accept')?.invalid" class="text-danger">
+              You must accept the terms and conditions.
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-outline-dark btn-block rounded-pill" [disabled]="registrationForm.invalid">Register</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

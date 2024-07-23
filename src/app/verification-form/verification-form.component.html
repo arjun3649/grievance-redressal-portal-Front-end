@@ -1,0 +1,44 @@
+
+<h2>Verification</h2>
+<form [formGroup]="verificationForm" (ngSubmit)="onSubmit()">
+  <div class="form-group">
+    <label>Whether you are a citizen of INDIA or an NRI? *</label><br>
+    <div class="radio-group">
+      <input type="radio" formControlName="citizenType" value="Indian" id="indian">
+      <label for="indian">Indian</label>
+      <input type="radio" formControlName="citizenType" value="NRI" id="nri">
+      <label for="nri">NRI</label>
+    </div>
+    <div *ngIf="citizenType?.invalid && (citizenType?.dirty || citizenType?.touched)">
+      <small class="error">Please select a citizen type</small>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="mobile">Mobile Number *</label>
+    <input id="mobile" type="text" formControlName="mobile" placeholder="Please Enter Mobile Number" required />
+    <div *ngIf="mobile?.invalid && (mobile?.dirty || mobile?.touched)">
+      <small class="error" *ngIf="mobile?.errors?.['required']">Mobile number is required</small>
+      <small class="error" *ngIf="mobile?.errors?.['pattern']">Mobile number must be 10 digits</small>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="captcha">Captcha *</label>
+    <input id="captcha" type="text" formControlName="captcha" placeholder="Captcha" required />
+    <img [src]="captchaImage" alt="Captcha Image">
+    <button type="button" (click)="refreshCaptcha()">&#x21bb;</button>
+    <div *ngIf="captcha?.invalid && (captcha?.dirty || captcha?.touched)">
+      <small class="error">Captcha is required</small>
+    </div>
+  </div>
+
+  <button type="submit">Submit</button>
+
+  <div class="logo">
+    <div class="div00"><a href="https://www.facebook.com/"><i class="fa-brands fa-facebook"></i></a></div>
+    <div class="div01"><a href="https://mail.google.com/"><i class="fa-solid fa-envelope"></i></a></div>
+  </div>
+
+  <p><a href="/register">Back To Registration Page</a></p>
+</form>
