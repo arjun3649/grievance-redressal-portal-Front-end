@@ -1,0 +1,35 @@
+
+   .otp-container {
+    text-align: center;
+    margin-top: 50px;
+  }
+  
+  .otp-inputs {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+  }
+  
+  .otp-inputs input {
+    width: 40px;
+    height: 40px;
+    font-size: 24px;
+    text-align: center;
+  }
+  
+  button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+  }
+  
+  .error-message {
+    color: red;
+    margin-top: 20px;
+  }
+  
+  .success-message {
+    color: green;
+    margin-top: 20px;
+  }
+  
