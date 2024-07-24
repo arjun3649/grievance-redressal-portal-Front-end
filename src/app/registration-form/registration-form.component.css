@@ -130,3 +130,6 @@ input[type="checkbox"] {
 .declaration {
   font-size: 14px;
 }
+.text-danger{
+color: red;
+}

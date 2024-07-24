@@ -1,13 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { NavbarComponent } from "../navbar/navbar.component";
 
 @Component({
   selector: 'app-grievance-form',
   templateUrl: './grievance-form.component.html',
   styleUrls: ['./grievance-form.component.css'],
-  imports: [CommonModule, ReactiveFormsModule, NavbarComponent],
+  imports: [CommonModule, ReactiveFormsModule],
   standalone: true,
 
 })
@@ -233,7 +232,7 @@ export class GrievanceFormComponent implements OnInit {
       district: ['', Validators.required],
       taluka: ['', Validators.required],
       village: ['', Validators.required],
-      api_pincode: ['', Validators.required],
+      pincode: ['', Validators.required],
       mobile: ['', [Validators.required, Validators.pattern('^((\\+91-?)|0)?[0-9]{10}$')]],
       email: ['', [Validators.required, Validators.email]],
       grievanceDistrict: ['', Validators.required],

@@ -2,11 +2,10 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { NavbarComponent } from "../navbar/navbar.component";
 
 @Component({
   standalone: true,
-  imports: [FormsModule, ReactiveFormsModule, CommonModule, NavbarComponent],
+  imports: [FormsModule,ReactiveFormsModule,CommonModule],
   selector: 'app-registration-form',
   templateUrl: './registration-form.component.html',
   styleUrls: ['./registration-form.component.css']
@@ -52,7 +51,6 @@ throw new Error('Method not implemented.');
       const { username, password } = this.registrationForm.value;
       localStorage.setItem('username', username);
       localStorage.setItem('password', password);
-     
 
       alert('Registration successful. Please login with the same credentials.');
       this.router.navigate(['/login']);
