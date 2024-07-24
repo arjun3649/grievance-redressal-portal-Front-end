@@ -233,7 +233,7 @@ export class GrievanceFormComponent implements OnInit {
       district: ['', Validators.required],
       taluka: ['', Validators.required],
       village: ['', Validators.required],
-      pincode: ['', Validators.required],
+      api_pincode: ['', Validators.required],
       mobile: ['', [Validators.required, Validators.pattern('^((\\+91-?)|0)?[0-9]{10}$')]],
       email: ['', [Validators.required, Validators.email]],
       grievanceDistrict: ['', Validators.required],
