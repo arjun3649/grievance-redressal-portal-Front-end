@@ -3,10 +3,11 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { NavbarComponent } from "../navbar/navbar.component";
 
 @Component({
   standalone: true,
-  imports:[ReactiveFormsModule, CommonModule,FormsModule],
+  imports: [ReactiveFormsModule, CommonModule, FormsModule, NavbarComponent],
   selector: 'app-otp-verification',
   templateUrl: './otp-verification.component.html',
   styleUrls: ['./otp-verification.component.css']
