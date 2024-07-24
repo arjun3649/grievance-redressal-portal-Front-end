@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+// import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
@@ -16,7 +17,7 @@ export class OtpVerificationComponent implements OnInit {
   errorMessage: string = '';
   successMessage: string = '';
 
-  constructor( private router: Router) {}
+   constructor( private router: Router) {}
 
   ngOnInit() {
     this.generateOtp();

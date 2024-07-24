@@ -27,10 +27,10 @@ export class VerificationFormComponent implements OnInit {
     });
 
     // this.captchaImage = './assests/images1.png'; 
-    this.captchaImage = './assests/IM1.jpeg';
-    this.captchaImage = './assests/IM2.jpeg';
-    this.captchaImage = './assests/IM3.jpeg';
-    this.captchaImage = './assests/IM4.jpeg';// Replace with actual captcha image URL
+    this.captchaImage = './assets/IM1.jpeg';
+    this.captchaImage = './assets/IM2.jpeg';
+    this.captchaImage = './assets/IM3.jpeg';
+    this.captchaImage = './assets/IM4.jpeg';// Replace with actual captcha image URL
   }
 
   ngOnInit(): void {}
@@ -38,15 +38,12 @@ export class VerificationFormComponent implements OnInit {
   refreshCaptcha(): void {
     // Logic to refresh the captcha image
     this.captchaImage = './assets/images1.png?' + new Date().getTime();
-    this.captchaImage = './assests/IM1.jpeg?' + new Date().getTime();
+    this.captchaImage = './assets/IM1.jpeg?' + new Date().getTime();
     
      // Example logic
   }
 
   onSubmit(): void {
-    console.log('====================================');
-    console.log("ciming from verification");
-    console.log('====================================');
     if (this.verificationForm.valid) {
       alert('Form submitted successfully!');
       this.router.navigate(['/otp']);
