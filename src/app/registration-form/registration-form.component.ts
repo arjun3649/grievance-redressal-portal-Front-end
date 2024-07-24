@@ -52,6 +52,7 @@ throw new Error('Method not implemented.');
       const { username, password } = this.registrationForm.value;
       localStorage.setItem('username', username);
       localStorage.setItem('password', password);
+     
 
       alert('Registration successful. Please login with the same credentials.');
       this.router.navigate(['/login']);

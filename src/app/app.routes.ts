@@ -9,13 +9,14 @@ import { RegistrationFormComponent } from './registration-form/registration-form
 import { LoginComponent } from './login/login.component';
 
 export const routes: Routes = [
-    {path:'',component:HomepageComponent},
+  { path: '', component: HomepageComponent },
+    {path:'Home',component:HomepageComponent},
     { path: 'about', component: AboutmeComponent },
     { path: 'grievanceform', component: GrievanceFormComponent },
     { path: 'trackgrievance', component: TrackGrievanceComponent },
     { path: "verification", component: VerificationFormComponent},
   { path: "otp", component: OtpVerificationComponent},
    { path: "registration", component: RegistrationFormComponent},
-   { path: "login", component: LoginComponent},
+   { path: 'login', component: LoginComponent},
 
 ];

@@ -44,6 +44,9 @@ export class VerificationFormComponent implements OnInit {
   }
 
   onSubmit(): void {
+    console.log('====================================');
+    console.log("ciming from verification");
+    console.log('====================================');
     if (this.verificationForm.valid) {
       alert('Form submitted successfully!');
       this.router.navigate(['/otp']);
